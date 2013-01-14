@@ -12,6 +12,7 @@
         "response-headers": [
             "X-RateLimit-Limit",
             "X-RateLimit-Remaining",
+            "X-Oauth-Scopes",
             "Link"
         ],
         "params": {
@@ -644,7 +645,7 @@
                 "filter": {
                     "type": "String",
                     "required": false,
-                    "validation": "^(assigned|created|mentioned||subscribed)$",
+                    "validation": "^(assigned|created|mentioned|subscribed)$",
                     "invalidmsg": "",
                     "description": ""
                 },
@@ -1781,6 +1782,15 @@
             }
         },
 
+        "delete": {
+            "url": "/repos/:user/:repo",
+            "method": "DELETE",
+            "params": {
+                "$user": null,
+                "$repo": null
+            }
+        },
+
         "merge": {
             "url": "/repos/:user/:repo/merges",
             "method": "POST",
@@ -1935,7 +1945,8 @@
                     "description": "Optional string - Only commits containing this file path will be returned."
                 },
                 "$page": null,
-                "$per_page": null
+                "$per_page": null,
+                "$since": null
             }
         },
 
