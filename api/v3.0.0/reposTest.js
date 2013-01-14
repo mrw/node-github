@@ -4,7 +4,7 @@
  * This product includes software developed by
  * Cloud9 IDE, Inc (http://c9.io).
  *
- * Author: Mike de Boer <mike@c9.io>
+ * Author: Mike de Boer <info@mikedeboer.nl>
  */
 
 "use strict";
@@ -147,6 +147,20 @@ describe("[repos]", function() {
                 has_issues: "Boolean",
                 has_wiki: "Boolean",
                 has_downloads: "Boolean"
+            },
+            function(err, res) {
+                Assert.equal(err, null);
+                // other assertions go here
+                next();
+            }
+        );
+    });
+
+    it("should successfully execute DELETE /repos/:user/:repo (delete)",  function(next) {
+        client.repos.delete(
+            {
+                user: "String",
+                repo: "String"
             },
             function(err, res) {
                 Assert.equal(err, null);
